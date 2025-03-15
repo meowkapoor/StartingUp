@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap')
+layer(base);
+
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-xs: 475px;
+
+  --color-primary-100: #ffe8f0;
+  --color-primary: #ee2b69;
+
+  --color-secondary: #fbe843;
+
+  --color-black-100: #333333;
+  --color-black-200: #141413;
+  --color-black-300: #7d8087;
+  --color-black: #000000;
+
+  --color-white-100: #f7f7f7;
+  --color-white: #ffffff;
+
+  --font-work-sans: var(--font-work-sans);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --shadow-100: 2px 2px 0px 0px rgb(0, 0, 0);
+  --shadow-200: 2px 2px 0px 2px rgb(0, 0, 0);
+  --shadow-300: 2px 2px 0px 2px rgb(238, 43, 105);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility heading {
+  @apply uppercase bg-black px-6 py-3 font-work-sans font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5 mx-auto;
+}
+
+@utility sub_heading {
+  @apply font-medium text-white text-[20px] text-center break-words;
+}
+
+@utility pink_container{
+  @apply pattern w-full min-h-[530px] bg-primary flex flex-col items-center justify-center px-6 py-10;
+}
+
+@utility pattern {
+  background-image: linear-gradient(
+    to right,
+    transparent 49.5%,
+    rgba(251, 232, 67, 0.2) 49.5%,
+    rgba(251, 232, 67, 0.6) 50.5%,
+    transparent 50.5%
+  );
+  background-size: 5% 100%;
+  background-position: center;
+  background-repeat: repeat-x;
+}
+
+
+@utility tag-tri {
+  @apply before:content-[''] before:absolute before:top-2 before:left-2 before:border-t-[10px] before:border-t-black before:border-r-[10px] before:border-r-transparent after:content-[''] after:absolute after:bottom-2 after:right-2 after:border-b-[10px] after:border-b-black after:border-l-[10px] after:border-l-transparent;
+}
+@utility tag {
+  @apply bg-secondary px-2 py-2 font-bold uppercase;
+}
+
+@layer base {
+    :root {
+        --radius: 0.5rem;
+    }
+}
+
+.w-md-editor-toolbar {
+    padding: 10px !important;
+}
